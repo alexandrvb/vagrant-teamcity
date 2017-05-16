@@ -1,0 +1,17 @@
+- name: Create download dir
+  file: name={{ download_dir }} state=directory
+- name: Download teamcity
+  get_url:
+    url: "{{ download_url }}"
+    dest: "{{ download_dir }}/{{ filename }}"
+    checksum: "{{ checksum }}"
+- name: Unarchive teamcity
+  unarchive: src="{{ download_dir }}/{{ filename }}" dest=/opt remote_src=yes
+- name: Install JDK
+  apt: name=default-jdk
+
+- name: Run TeamCity
+  shell: ./runAll.sh start
+  args:
+    chdir: /opt/TeamCity/bin
+    creates: /opt/TeamCity/buildAgent/logs/buildAgent.pid

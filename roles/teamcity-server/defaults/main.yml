@@ -1,0 +1,4 @@
+download_dir: /vagrant/downloads
+download_url: https://download.jetbrains.com/teamcity/TeamCity-2017.1.1.tar.gz
+filename: TeamCity-2017.1.1.tar.gz
+checksum: sha256:1bcb1551f8696071d7ad8876fcd01866efeb2c405a998e112b9d9262317ae6b7
