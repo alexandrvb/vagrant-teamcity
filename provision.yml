@@ -1,0 +1,17 @@
+- hosts: all
+  gather_facts: False
+  become: True
+  tasks:
+    - name: Update apt-cache
+      raw: apt-get -y update
+    - name: Install Python
+      raw: apt-get -y install python
+
+    - name: Install apt packages
+      apt: name={{ item }}
+      with_items:
+        - python-pip
+        - libssl-dev
+
+    - name: Install ansible
+      pip: name=ansible
